@@ -1,14 +1,19 @@
 name: Say Hello
-run-name: example of run name
 
-on: [push]
+on:
+  workflow_dispatch:
+    inputs:
+      name:
+         description: "name to grate"
+         default: "gust"
+         required: false
 
 jobs:
   first-job:
     runs-on: ubuntu-latest
     steps:
       - run : |
-          echo "hey there"
+          echo "hey ${{ inputs.name }} "
           echo "what here"
     
       - run : echo "weeeee" 
